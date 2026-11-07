@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SisaUang - Pengatur Keuangan</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ==============================
+             HEADER
+        ============================== -->
+
+        <header class="header">
+
+            <div class="header-content">
+                <h1>💰 Sisa Uang</h1>
+
+                <p>
+                    Teman sederhana untuk mengatur uangmu setiap hari.
+                </p>
+            </div>
+
+            <button
+                id="btnDarkMode"
+                class="dark-mode-btn"
+                type="button"
+            >
+                🌙 Dark Mode
+            </button>
+
+        </header>
+
+
+        <!-- ==============================
+             NAVIGASI
+        ============================== -->
+
+        <nav class="nav-menu">
+
+            <button
+                class="nav-button active"
+                data-page="inputPage"
+                type="button"
+            >
+                💵 Masukkan Uang
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="statistikPage"
+                type="button"
+            >
+                📊 Statistik
+            </button>
+
+            <button
+                class="nav-button"
+                data-page="riwayatPage"
+                type="button"
+            >
+                📜 Riwayat
+            </button>
+
+        </nav>
+
+
+        <!-- ==================================================
+             HALAMAN MASUKKAN UANG
+        ================================================== -->
+
+        <main
+            id="inputPage"
+            class="page-section active-page"
+        >
+
+            <!-- UANG -->
+
+            <section class="card">
+
+                <h2>💵 Uang yang Kamu Punya</h2>
+
+                <label for="uang">
+                    Masukkan jumlah uang
+                </label>
+
+                <input
+                    type="number"
+                    id="uang"
+                    placeholder="Contoh: 50000"
+                    min="0"
+                >
+
+            </section>
+
+
+            <!-- TANGGAL -->
+
+            <section class="card">
+
+                <h2>📅 Tanggal</h2>
+
+                <label for="tanggal">
+                    Pilih tanggal uang ini
+                </label>
+
+                <input
+                    type="date"
+                    id="tanggal"
+                >
+
+                <p class="info">
+                    Kamu dapat menentukan tanggal sendiri.
+                </p>
+
+            </section>
+
+
+            <!-- PEMBAGIAN -->
+
+            <section class="card">
+
+                <h2>⚙️ Atur Pembagian</h2>
+
+                <div class="kategori">
+
+                    <label for="makan">
+                        🍜 Makan (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="makan"
+                        value="40"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <div class="kategori">
+
+                    <label for="transportasi">
+                        🚌 Transportasi (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="transportasi"
+                        value="20"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <div class="kategori">
+
+                    <label for="tabungan">
+                        🏦 Tabungan (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="tabungan"
+                        value="25"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <div class="kategori">
+
+                    <label for="lainnya">
+                        🛍️ Kebutuhan Lainnya (%)
+                    </label>
+
+                    <input
+                        type="number"
+                        id="lainnya"
+                        value="15"
+                        min="0"
+                        max="100"
+                    >
+
+                </div>
+
+
+                <p
+                    id="peringatan"
+                    class="peringatan"
+                ></p>
+
+            </section>
+
+
+            <!-- HASIL -->
+
+            <section class="card">
+
+                <h2>📊 Hasil Pembagian</h2>
+
+                <div class="hasil-container">
+
+                    <div class="hasil makan">
+
+                        <span>
+                            🍜 Makan
+                        </span>
+
+                        <strong id="hasilMakan">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="hasil transportasi">
+
+                        <span>
+                            🚌 Transportasi
+                        </span>
+
+                        <strong id="hasilTransportasi">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="hasil tabungan">
+
+                        <span>
+                            🏦 Tabungan
+                        </span>
+
+                        <strong id="hasilTabungan">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="hasil lainnya">
+
+                        <span>
+                            🛍️ Lainnya
+                        </span>
+
+                        <strong id="hasilLainnya">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="total">
+
+                    <span>
+                        Total Uang
+                    </span>
+
+                    <strong id="hasilTotal">
+                        Rp0
+                    </strong>
+
+                </div>
+
+            </section>
+
+
+            <!-- TOMBOL -->
+
+            <section class="card tombol-area">
+
+                <button
+                    id="btnSimpan"
+                    type="button"
+                >
+                    💾 Simpan Pembagian
+                </button>
+
+
+                <button
+                    id="btnReset"
+                    class="button-reset"
+                    type="button"
+                >
+                    🔄 Reset
+                </button>
+
+
+                <p id="status"></p>
+
+            </section>
+
+        </main>
+
+
+        <!-- ==================================================
+             HALAMAN STATISTIK
+        ================================================== -->
+
+        <main
+            id="statistikPage"
+            class="page-section"
+        >
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <div>
+                        <h2>📊 Statistik Keuangan</h2>
+
+                        <p class="info">
+                            Ringkasan seluruh data keuangan
+                            yang telah kamu simpan.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- STATISTIK GRID -->
+
+                <div class="statistik-grid">
+
+                    <div class="statistik-box">
+
+                        <span>
+                            💰 Total Uang
+                        </span>
+
+                        <strong id="statTotal">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="statistik-box">
+
+                        <span>
+                            🍜 Total Makan
+                        </span>
+
+                        <strong id="statMakan">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="statistik-box">
+
+                        <span>
+                            🚌 Transportasi
+                        </span>
+
+                        <strong id="statTransportasi">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="statistik-box">
+
+                        <span>
+                            🏦 Total Tabungan
+                        </span>
+
+                        <strong id="statTabungan">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="statistik-box">
+
+                        <span>
+                            🛍️ Kebutuhan Lainnya
+                        </span>
+
+                        <strong id="statLainnya">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="statistik-box">
+
+                        <span>
+                            📝 Jumlah Catatan
+                        </span>
+
+                        <strong id="statJumlah">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- GRAFIK -->
+
+            <section class="card">
+
+                <h2>📈 Grafik Pembagian Uang</h2>
+
+                <div class="grafik">
+
+                    <!-- MAKAN -->
+
+                    <div class="grafik-item">
+
+                        <div class="grafik-label">
+
+                            <span>
+                                🍜 Makan
+                            </span>
+
+                            <strong id="grafikMakanText">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="bar-background">
+
+                            <div
+                                id="barMakan"
+                                class="bar bar-makan"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TRANSPORTASI -->
+
+                    <div class="grafik-item">
+
+                        <div class="grafik-label">
+
+                            <span>
+                                🚌 Transportasi
+                            </span>
+
+                            <strong id="grafikTransportasiText">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="bar-background">
+
+                            <div
+                                id="barTransportasi"
+                                class="bar bar-transportasi"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TABUNGAN -->
+
+                    <div class="grafik-item">
+
+                        <div class="grafik-label">
+
+                            <span>
+                                🏦 Tabungan
+                            </span>
+
+                            <strong id="grafikTabunganText">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="bar-background">
+
+                            <div
+                                id="barTabungan"
+                                class="bar bar-tabungan"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LAINNYA -->
+
+                    <div class="grafik-item">
+
+                        <div class="grafik-label">
+
+                            <span>
+                                🛍️ Lainnya
+                            </span>
+
+                            <strong id="grafikLainnyaText">
+                                Rp0
+                            </strong>
+
+                            </div>
+
+
+                        <div class="bar-background">
+
+                            <div
+                                id="barLainnya"
+                                class="bar bar-lainnya"
+                            ></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- ==================================================
+             HALAMAN RIWAYAT
+        ================================================== -->
+
+        <main
+            id="riwayatPage"
+            class="page-section"
+        >
+
+            <section class="card">
+
+                <div class="riwayat-header">
+
+                    <div>
+
+                        <h2>📜 Riwayat Uang</h2>
+
+                        <p class="info">
+                            Lihat data yang telah kamu simpan.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="btnHapusSemua"
+                        class="button-danger"
+                        type="button"
+                    >
+                        🗑️ Hapus Semua
+                    </button>
+
+                </div>
+
+
+                <!-- FILTER -->
+
+                <div class="filter-riwayat">
+
+                    <div>
+
+                        <label for="filterTanggal">
+                            🔎 Cari Tanggal
+                        </label>
+
+                        <input
+                            type="date"
+                            id="filterTanggal"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <label for="filterBulan">
+                            🗓️ Pilih Bulan
+                        </label>
+
+                        <input
+                            type="month"
+                            id="filterBulan"
+                        >
+
+                    </div>
+
+
+                    <button
+                        id="btnResetFilter"
+                        class="button-reset"
+                        type="button"
+                    >
+                        🔄 Reset Filter
+                    </button>
+
+                </div>
+
+
+                <!-- LIST RIWAYAT -->
+
+                <div id="riwayat">
+
+                    <div class="kosong">
+
+                        <p>
+                            Belum ada riwayat.
+                        </p>
+
+                        <small>
+                            Simpan pembagian uang terlebih dahulu.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <p>
+                SisaUang © 2026
+            </p>
+
+            <p>
+                Belajar mengatur uang sejak sekolah 💙
+            </p>
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
